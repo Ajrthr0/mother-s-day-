@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Mother's Day 💐</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --red:        #e63946;
+  --deep-red:   #c1121f;
+  --crimson:    #85182a;
+  --tomato:     #ff6347;
+  --blush:      #ffb3b3;
+  --petal:      #fff0f0;
+  --cream:      #fff8f8;
+  --rose-dark:  #6d1a1a;
+  --text:       #3d0c0c;
+  --mauve:      #c47070;
+  --dusty:      #d4a0a0;
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  min-height:100vh;
+  background:var(--cream);
+  font-family:'Cormorant Garamond',serif;
+  display:flex; flex-direction:column;
+  align-items:center;
+  overflow-x:hidden;
+  position:relative;
+  cursor:none;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor-dot {
+  position:fixed;
+  width:10px; height:10px;
+  background:var(--red);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,background .2s;
+  mix-blend-mode:multiply;
+}
+.cursor-ring {
+  position:fixed;
+  width:30px; height:30px;
+  border:1.5px solid var(--tomato);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:transform .08s ease-out, width .2s, height .2s, opacity .2s;
+  opacity:.55;
+}
+
+/* ── AURORA BG ── */
+.aurora {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(255,99,71,.28) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 70% at 85% 85%, rgba(230,57,70,.22) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(255,200,200,.5) 0%, transparent 70%),
+    linear-gradient(160deg,#fff5f5 0%,#fff0f0 50%,#ffe8e8 100%);
+  animation:auroraShift 12s ease-in-out infinite alternate;
+}
+@keyframes auroraShift {
+  from { filter:hue-rotate(0deg) brightness(1); }
+  to   { filter:hue-rotate(10deg) brightness(1.04); }
+}
+
+canvas#petalCanvas { position:fixed; inset:0; z-index:1; pointer-events:none; }
+
+/* ── FLOATING TOMATOES ── */
+.floater {
+  position:fixed; pointer-events:none; z-index:2;
+  font-size:clamp(1.6rem,3vw,2.6rem);
+  opacity:0;
+  will-change:transform,opacity;
+}
+@keyframes floatUp {
+  0%   { opacity:0;   transform:translateY(0) rotate(0deg) scale(1); }
+  10%  { opacity:.18; }
+  50%  { opacity:.22; transform:translateY(-28px) rotate(180deg) scale(1.06); }
+  90%  { opacity:.18; }
+  100% { opacity:0;   transform:translateY(0) rotate(360deg) scale(1); }
+}
+
+/* ── SPARKLES ── */
+.sparkle {
+  position:fixed; pointer-events:none; z-index:2;
+  border-radius:50%; background:white;
+  box-shadow:0 0 6px 2px rgba(255,100,80,.9);
+  animation:sparkleAnim linear infinite;
+}
+@keyframes sparkleAnim {
+  0%,100%{ transform:scale(0) rotate(0deg); opacity:0; }
+  50%    { transform:scale(1) rotate(180deg); opacity:1; }
+}
+
+/* ── PAGE ── */
+.page {
+  position:relative; z-index:3;
+  display:flex; flex-direction:column;
+  align-items:center;
+  width:100%; max-width:700px;
+  padding:52px 24px 72px;
+}
+
+/* ── HEADER ── */
+.header {
+  text-align:center; margin-bottom:10px;
+  animation:riseIn .9s cubic-bezier(.22,.61,.36,1) both;
+}
+.header .kicker {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; color:var(--mauve);
+  font-size:1.05rem; letter-spacing:.18em;
+  text-transform:uppercase; margin-bottom:6px; opacity:.9;
+}
+.header h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,8vw,4.6rem);
+  color:var(--deep-red); line-height:1.06;
+  font-weight:700; letter-spacing:-.015em;
+  text-shadow:0 4px 22px rgba(193,18,31,.22),0 1px 0 rgba(255,255,255,.8);
+}
+.header h1 span { font-style:italic; color:var(--red); }
+
+.bloom-row {
+  display:flex; justify-content:center; gap:6px;
+  margin-top:14px; font-size:1.9rem;
+}
+.bloom-row span { display:inline-block; animation:bloomBounce 2.4s ease-in-out infinite; }
+.bloom-row span:nth-child(2){ animation-delay:.3s; }
+.bloom-row span:nth-child(3){ animation-delay:.6s; }
+.bloom-row span:nth-child(4){ animation-delay:.9s; }
+.bloom-row span:nth-child(5){ animation-delay:1.2s; }
+@keyframes bloomBounce {
+  0%,100%{ transform:translateY(0) scale(1) rotate(0deg); }
+  30%    { transform:translateY(-9px) scale(1.16) rotate(-6deg); }
+  60%    { transform:translateY(-4px) scale(1.08) rotate(3deg); }
+}
+
+/* ── DIVIDER ── */
+.flourish {
+  display:flex; align-items:center; gap:14px;
+  width:100%; max-width:440px;
+  margin:22px 0; animation:riseIn 1s .35s both;
+}
+.flourish::before,.flourish::after {
+  content:''; flex:1; height:1.5px;
+  background:linear-gradient(to right,transparent,var(--blush) 30%,var(--red) 50%,var(--blush) 70%,transparent);
+}
+.flourish-center {
+  color:var(--red); font-size:.9rem;
+  letter-spacing:.35em; white-space:nowrap;
+}
+
+/* ══════════════════════
+   ENVELOPE SCENE
+══════════════════════ */
+.envelope-scene {
+  position:relative;
+  width:420px; height:300px;
+  margin:10px auto 60px;
+  animation:riseIn 1s .6s both;
+  display:flex; align-items:center; justify-content:center;
+}
+
+.env-glow {
+  position:absolute;
+  width:340px; height:200px; border-radius:50%;
+  background:radial-gradient(ellipse,rgba(230,57,70,.35) 0%,transparent 70%);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  animation:glowPulse 3.2s ease-in-out infinite;
+  pointer-events:none; z-index:0;
+}
+@keyframes glowPulse {
+  0%,100%{ opacity:.6; transform:translate(-50%,-50%) scale(1); }
+  50%    { opacity:1;  transform:translate(-50%,-50%) scale(1.14); }
+}
+
+.envelope-wrap {
+  position:relative;
+  width:360px; height:240px;
+  cursor:pointer; z-index:1;
+  filter:drop-shadow(0 16px 40px rgba(193,18,31,.3));
+  transition:filter .3s ease;
+  animation:envFloat 4s ease-in-out infinite;
+  perspective:1200px;
+}
+@keyframes envFloat {
+  0%,100%{ transform:translateY(0px) rotate(-.4deg); }
+  50%    { transform:translateY(-11px) rotate(.4deg); }
+}
+.envelope-wrap:hover:not(.is-opening) {
+  filter:drop-shadow(0 24px 52px rgba(193,18,31,.45));
+  animation-play-state:paused;
+  transform:translateY(-8px) scale(1.028) rotate(.15deg) !important;
+}
+.envelope-wrap.is-opening {
+  animation:envShake .65s cubic-bezier(.36,.07,.19,.97) forwards;
+}
+@keyframes envShake {
+  0%  { transform:translateY(0)    rotate(0deg)   scale(1); }
+  10% { transform:translateY(-5px) rotate(-4deg)  scale(1.01); }
+  22% { transform:translateY(4px)  rotate(3.8deg) scale(1.03); }
+  34% { transform:translateY(-6px) rotate(-3deg)  scale(1.04); }
+  46% { transform:translateY(4px)  rotate(2.2deg) scale(1.04); }
+  60% { transform:translateY(-3px) rotate(-1.2deg)scale(1.03); }
+  75% { transform:translateY(2px)  rotate(.6deg)  scale(1.025); }
+  88% { transform:translateY(-1px) rotate(-.2deg) scale(1.02); }
+  100%{ transform:translateY(0)   rotate(0deg)   scale(1.02); }
+}
+
+/* ── Envelope SVG ── */
+#envSvg {
+  width:360px; height:240px;
+  position:absolute; top:0; left:0;
+  overflow:visible;
+  display:block;
+}
+
+/* ── FLAP: 3‑D CSS flip around top edge ── */
+.flap-3d-wrapper {
+  position:absolute;
+  left:0; top:0;
+  width:360px; height:120px; /* covers top half of envelope */
+  overflow:hidden;            /* clip so only the visible face shows */
+  transform-origin:top center;
+  transform-style:preserve-3d;
+  perspective:800px;
+  transition:none;
+  pointer-events:none;
+  z-index:5;
+}
+.flap-3d-wrapper.open {
+  animation:flapFlip .95s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes flapFlip {
+  0%  { transform:rotateX(0deg);   }
+  100%{ transform:rotateX(-175deg);}
+}
+
+/* front & back faces inside wrapper */
+.flap-face {
+  position:absolute;
+  left:0; top:0; width:360px; height:240px;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  overflow:hidden;
+  pointer-events:none;
+}
+.flap-face.back {
+  transform:rotateX(180deg);
+}
+
+/* ── Letter rises ── */
+#letterGroup {
+  transition:transform 1.1s cubic-bezier(.22,.61,.36,1) .2s;
+  will-change:transform;
+}
+#letterGroup.risen { transform:translateY(-110px); }
+
+/* ── Hint ── */
+.hint {
+  position:absolute; bottom:-52px; left:50%;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; color:var(--mauve);
+  font-size:.97rem; pointer-events:none;
+  transition:opacity .5s ease;
+  animation:hintPulse 2.2s ease-in-out infinite;
+}
+@keyframes hintPulse {
+  0%,100%{ opacity:.45; transform:translateX(-50%) translateY(0); }
+  50%    { opacity:1;   transform:translateX(-50%) translateY(-5px); }
+}
+
+/* ══════════════════════
+   MESSAGE CARD
+══════════════════════ */
+.message-card {
+  width:100%; max-width:600px;
+  background:linear-gradient(148deg,#fff5f5 0%,#fff0f0 50%,#ffe0e0 100%);
+  border-radius:28px;
+  padding:50px 52px;
+  border:1.5px solid rgba(230,57,70,.22);
+  box-shadow:0 2px 0 rgba(255,255,255,.9) inset,
+             0 16px 70px rgba(193,18,31,.15),
+             0 2px 8px rgba(193,18,31,.08);
+  position:relative; overflow:hidden;
+  opacity:0; transform:translateY(60px) scale(.93);
+  transition:opacity .9s ease, transform .9s cubic-bezier(.22,.61,.36,1);
+  display:none;
+}
+.message-card::before {
+  content:''; position:absolute; inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23e63946' opacity='.05'/%3E%3C/svg%3E") repeat;
+  pointer-events:none;
+}
+.corner { position:absolute; font-size:2.8rem; opacity:.17; pointer-events:none; }
+.corner.tl { top:14px; left:16px; transform:rotate(-22deg); }
+.corner.tr { top:14px; right:16px; transform:rotate(18deg); }
+.corner.bl { bottom:14px; left:16px; transform:rotate(12deg); }
+.corner.br { bottom:14px; right:16px; transform:rotate(-18deg); }
+
+.message-card.show    { display:block; }
+.message-card.visible { opacity:1; transform:translateY(0) scale(1); }
+
+.msg-salutation {
+  font-family:'Dancing Script',cursive;
+  font-size:2.1rem; color:var(--red);
+  display:block; margin-bottom:22px; line-height:1;
+}
+.msg-body p {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem; line-height:1.95;
+  color:var(--text); margin-bottom:20px;
+}
+.msg-body p:last-of-type { margin-bottom:0; }
+.msg-signature {
+  font-family:'Dancing Script',cursive;
+  font-size:1.85rem; color:var(--deep-red);
+  text-align:right; display:block; margin-top:24px;
+}
+.typed { opacity:0; }
+.typed.visible { animation:fadeSlideIn .7s ease forwards; }
+@keyframes fadeSlideIn {
+  from{ opacity:0; transform:translateY(14px); }
+  to  { opacity:1; transform:translateY(0); }
+}
+
+/* ── PHOTO MEMORIES ── */
+.memories {
+  display:none; flex-direction:column;
+  align-items:center; gap:12px;
+  margin-top:14px;
+}
+.memories.show { display:flex; }
+.memories-label {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; color:var(--mauve);
+  font-size:.97rem; letter-spacing:.06em;
+}
+.photo-strip {
+  display:flex; gap:14px; flex-wrap:wrap;
+  justify-content:center;
+}
+.photo-frame {
+  width:80px; height:80px;
+  border-radius:12px;
+  border:3px solid white;
+  box-shadow:0 4px 18px rgba(193,18,31,.2);
+  font-size:2.6rem;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg,#fff0f0,#ffe0e0);
+  animation:photoAppear .5s cubic-bezier(.34,1.56,.64,1) both;
+  cursor:default;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.photo-frame:hover { transform:scale(1.14) rotate(3deg); box-shadow:0 8px 28px rgba(193,18,31,.32); }
+@keyframes photoAppear {
+  from{ opacity:0; transform:scale(0) rotate(-12deg); }
+  to  { opacity:1; transform:scale(1) rotate(0deg); }
+}
+
+/* ── LOVE METER ── */
+.love-meter {
+  display:none; flex-direction:column;
+  align-items:center; gap:10px; margin-top:12px;
+}
+.love-meter.show { display:flex; }
+.love-label { font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--mauve); font-size:.97rem; }
+.hearts-row { display:flex; gap:9px; flex-wrap:wrap; justify-content:center; }
+.heart-beat {
+  font-size:1.7rem; display:inline-block;
+  animation:heartPop .5s cubic-bezier(.34,1.56,.64,1) both;
+  cursor:default;
+  transition:transform .15s ease;
+}
+.heart-beat:hover { transform:scale(1.45) rotate(-8deg); }
+@keyframes heartPop { from{transform:scale(0) rotate(-20deg);opacity:0;} to{transform:scale(1) rotate(0);opacity:1;} }
+
+/* ── WISH COUNTER ── */
+.wish-bar {
+  display:none; flex-direction:column;
+  align-items:center; gap:8px; margin-top:8px;
+}
+.wish-bar.show { display:flex; }
+.wish-bar-inner {
+  width:260px; height:10px; border-radius:50px;
+  background:rgba(230,57,70,.12);
+  overflow:hidden;
+  position:relative;
+}
+.wish-fill {
+  height:100%; border-radius:50px;
+  background:linear-gradient(90deg,var(--tomato),var(--deep-red));
+  width:0%;
+  transition:width 1.8s cubic-bezier(.22,.61,.36,1);
+}
+.wish-text {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; color:var(--mauve); font-size:.9rem;
+}
+
+/* ── BUTTONS ── */
+.btn-row {
+  display:none; gap:14px; flex-wrap:wrap;
+  justify-content:center; margin-top:18px;
+}
+.btn-row.show { display:flex; }
+.btn {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; font-size:1.04rem;
+  border:none; border-radius:50px;
+  padding:13px 30px; cursor:pointer;
+  transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.btn:hover { transform:translateY(-4px); filter:brightness(1.07); }
+.btn-primary {
+  background:linear-gradient(135deg,var(--red) 0%,var(--deep-red) 100%);
+  color:white; box-shadow:0 6px 24px rgba(193,18,31,.4);
+}
+.btn-ghost {
+  background:rgba(255,255,255,.78); color:var(--deep-red);
+  border:1.5px solid rgba(230,57,70,.38);
+  box-shadow:0 3px 14px rgba(193,18,31,.1);
+}
+@keyframes sonar { from{transform:scale(.85);opacity:.9;} to{transform:scale(1.75);opacity:0;} }
+
+/* ── FOOTER ── */
+.footer {
+  margin-top:28px;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; color:var(--dusty);
+  font-size:.9rem; text-align:center; opacity:.7;
+  animation:riseIn 1s 1.4s both;
+}
+
+/* ── GLOBALS ── */
+@keyframes riseIn {
+  from{ opacity:0; transform:translateY(30px); }
+  to  { opacity:1; transform:translateY(0); }
+}
+
+/* ── CONFETTI ── */
+.cfp {
+  position:fixed; pointer-events:none; z-index:999;
+  animation:cfFall ease forwards;
+}
+@keyframes cfFall {
+  0%  { opacity:1; transform:translate(0,0) rotate(0deg) scale(1); }
+  100%{ opacity:0; transform:translate(var(--tx),var(--ty)) rotate(900deg) scale(.1); }
+}
+
+/* ── TRAIL ── */
+.trail-el {
+  position:fixed; pointer-events:none; z-index:998;
+  font-size:1.15rem;
+  animation:trailFade 1s ease forwards;
+}
+@keyframes trailFade {
+  0%  { opacity:.9; transform:scale(1.3) translateY(0); }
+  100%{ opacity:0;  transform:scale(.35) translateY(-35px); }
+}
+
+/* ── RIPPLE ── */
+.ripple {
+  position:fixed; pointer-events:none; z-index:997;
+  border-radius:50%;
+  border:2px solid var(--red);
+  animation:rippleOut .7s ease-out forwards;
+}
+@keyframes rippleOut {
+  0%  { width:8px;height:8px;opacity:.8;margin-left:-4px;margin-top:-4px; }
+  100%{ width:60px;height:60px;opacity:0;margin-left:-30px;margin-top:-30px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="aurora"></div>
+<canvas id="petalCanvas"></canvas>
+
+<!-- Floating tomatoes + flowers -->
+<script>
+const floaters = [
+  {e:'🍅',t:'8%',l:'3%',dur:'13s,22s',del:'0s,0s'},
+  {e:'🌹',t:'14%',r:'5%',dur:'16s,26s',del:'2s,3s'},
+  {e:'🍅',t:'52%',l:'1%',dur:'10s,18s',del:'1s,6s'},
+  {e:'🌺',t:'78%',r:'3%',dur:'14s,24s',del:'3s,9s'},
+  {e:'🍅',t:'38%',r:'1%',dur:'18s,28s',del:'5s,4s'},
+  {e:'🌷',t:'90%',l:'7%',dur:'11s,20s',del:'4s,8s'},
+  {e:'🍅',t:'65%',l:'5%',dur:'15s,25s',del:'6s,11s'},
+  {e:'❤️',t:'25%',l:'0%',dur:'12s,21s',del:'7s,5s'},
+  {e:'🍅',t:'82%',r:'7%',dur:'9s,17s',del:'2.5s,13s'},
+];
+floaters.forEach(f=>{
+  const d=document.createElement('div');
+  d.className='floater';
+  d.textContent=f.e;
+  d.style.top=f.t;
+  if(f.l) d.style.left=f.l;
+  if(f.r) d.style.right=f.r;
+  d.style.animation=`floatUp ${f.dur.split(',')[0]} ease-in-out infinite ${f.del.split(',')[0]}`;
+  document.body.appendChild(d);
+});
+</script>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="kicker">a letter from the heart</div>
+    <h1>Happy <span>Mother's</span> Day</h1>
+    <div class="bloom-row">
+      <span>🍅</span><span>🌹</span><span>❤️</span><span>🌺</span><span>🍅</span>
+    </div>
+  </div>
+
+  <div class="flourish"><div class="flourish-center">✦ &nbsp; ✦ &nbsp; ✦</div></div>
+
+  <!-- ENVELOPE SCENE -->
+  <div class="envelope-scene" id="envelopeScene">
+    <div class="env-glow"></div>
+
+    <div class="envelope-wrap" id="envWrap" onclick="openEnvelope()" title="Click to open your letter">
+
+      <!-- Base envelope SVG (body, letter, crease folds — no flap) -->
+      <svg id="envSvg" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+        <defs>
+          <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#ffe0e0"/>
+            <stop offset="45%"  stop-color="#ffb3b3"/>
+            <stop offset="100%" stop-color="#e63946"/>
+          </linearGradient>
+          <linearGradient id="letterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stop-color="#fff8f8"/>
+            <stop offset="100%" stop-color="#ffe0e0"/>
+          </linearGradient>
+          <linearGradient id="sideL" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#c1121f" stop-opacity=".48"/>
+            <stop offset="100%" stop-color="#ffe0e0" stop-opacity=".04"/>
+          </linearGradient>
+          <linearGradient id="sideR" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="0%"   stop-color="#c1121f" stop-opacity=".44"/>
+            <stop offset="100%" stop-color="#ffe0e0" stop-opacity=".04"/>
+          </linearGradient>
+          <linearGradient id="bottomGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%"   stop-color="#85182a" stop-opacity=".52"/>
+            <stop offset="100%" stop-color="#ffe0e0" stop-opacity=".02"/>
+          </linearGradient>
+          <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+            <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#85182a" flood-opacity=".24"/>
+          </filter>
+          <filter id="letterShadow" x="-15%" y="-15%" width="130%" height="130%">
+            <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#85182a" flood-opacity=".14"/>
+          </filter>
+          <clipPath id="envClip"><rect x="0" y="0" width="360" height="240" rx="12" ry="12"/></clipPath>
+          <clipPath id="envClipInner"><rect x="1" y="1" width="358" height="238" rx="11" ry="11"/></clipPath>
+        </defs>
+
+        <!-- Shadow base -->
+        <rect x="5" y="12" width="350" height="230" rx="12" ry="12" fill="rgba(133,24,42,.16)" filter="url(#softShadow)"/>
+
+        <!-- Envelope body -->
+        <rect x="0" y="0" width="360" height="240" rx="12" ry="12" fill="url(#bodyGrad)"/>
+
+        <!-- Letter paper -->
+        <g clip-path="url(#envClipInner)">
+          <g id="letterGroup" filter="url(#letterShadow)">
+            <rect x="44" y="40" width="272" height="224" rx="6" fill="url(#letterGrad)"/>
+            <rect x="44" y="40" width="272" height="224" rx="6" fill="none" stroke="rgba(230,57,70,.2)" stroke-width="1"/>
+            <line x1="64" y1="80"  x2="316" y2="80"  stroke="#ffb3b3" stroke-width="1"/>
+            <line x1="64" y1="98"  x2="316" y2="98"  stroke="#ffb3b3" stroke-width="1"/>
+            <line x1="64" y1="116" x2="316" y2="116" stroke="#ffb3b3" stroke-width="1"/>
+            <line x1="64" y1="134" x2="316" y2="134" stroke="#ffb3b3" stroke-width="1"/>
+            <line x1="64" y1="152" x2="290" y2="152" stroke="#ffb3b3" stroke-width="1"/>
+            <text x="64" y="68" font-family="'Dancing Script',cursive" font-size="17" fill="#c1121f" opacity=".85">Dear Mama,</text>
+            <text x="282" y="208" font-size="20" font-family="serif" fill="#e63946" opacity=".32">♥</text>
+            <text x="52" y="248" font-size="24" font-family="serif" fill="#ff6347" opacity=".22">🍅</text>
+            <text x="300" y="252" font-size="20" font-family="serif" fill="#e63946" opacity=".22">🌹</text>
+          </g>
+        </g>
+
+        <!-- Side folds -->
+        <polygon points="0,0 0,240 180,118" fill="url(#sideL)" clip-path="url(#envClipInner)"/>
+        <polygon points="360,0 360,240 180,118" fill="url(#sideR)" clip-path="url(#envClipInner)"/>
+        <!-- Bottom fold -->
+        <polygon points="0,240 360,240 180,118" fill="url(#bottomGrad)" clip-path="url(#envClipInner)"/>
+
+        <!-- Crease lines -->
+        <line x1="0"   y1="240" x2="180" y2="118" stroke="rgba(255,255,255,.18)" stroke-width="1" clip-path="url(#envClip)"/>
+        <line x1="360" y1="240" x2="180" y2="118" stroke="rgba(255,255,255,.18)" stroke-width="1" clip-path="url(#envClip)"/>
+
+        <!-- Border + highlight -->
+        <rect x="0" y="0" width="360" height="240" rx="12" ry="12" fill="none" stroke="rgba(255,99,71,.5)" stroke-width="1.5"/>
+        <rect x="2" y="2" width="356" height="236" rx="11" ry="11" fill="none" stroke="rgba(255,255,255,.32)" stroke-width="1"/>
+        <ellipse cx="100" cy="30" rx="92" ry="17" fill="rgba(255,255,255,.18)" transform="rotate(-3,100,30)"/>
+      </svg>
+
+      <!-- ══ 3‑D CSS FLAP ══ -->
+      <div class="flap-3d-wrapper" id="flapWrapper">
+        <!-- Front face SVG -->
+        <div class="flap-face front">
+          <svg viewBox="0 0 360 240" width="360" height="240" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+            <defs>
+              <linearGradient id="flapGradF" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%"   stop-color="#c1121f"/>
+                <stop offset="100%" stop-color="#ffe0e0"/>
+              </linearGradient>
+              <radialGradient id="sealGrad" cx="38%" cy="34%" r="62%">
+                <stop offset="0%"   stop-color="#e63946"/>
+                <stop offset="100%" stop-color="#6d1a1a"/>
+              </radialGradient>
+              <clipPath id="flapClipF"><rect x="0" y="0" width="360" height="240" rx="12" ry="12"/></clipPath>
+            </defs>
+            <!-- Flap triangle -->
+            <polygon points="0,0 360,0 180,128" fill="url(#flapGradF)" clip-path="url(#flapClipF)"/>
+            <!-- Edges -->
+            <line x1="2"   y1="1" x2="358" y2="1"   stroke="rgba(255,255,255,.48)" stroke-width="2" clip-path="url(#flapClipF)"/>
+            <line x1="0"   y1="0" x2="180" y2="128" stroke="rgba(193,18,31,.22)"   stroke-width="1.5" clip-path="url(#flapClipF)"/>
+            <line x1="360" y1="0" x2="180" y2="128" stroke="rgba(193,18,31,.22)"   stroke-width="1.5" clip-path="url(#flapClipF)"/>
+            <!-- Wax seal -->
+            <circle cx="180" cy="82" r="24" fill="url(#sealGrad)"/>
+            <circle cx="180" cy="82" r="24" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
+            <circle cx="180" cy="82" r="18" fill="none" stroke="rgba(255,255,255,.17)" stroke-width="1"/>
+            <text x="180" y="91" text-anchor="middle" font-size="22" font-family="serif" fill="white">♥</text>
+            <ellipse cx="172" cy="74" rx="7" ry="4" fill="white" opacity=".27" transform="rotate(-28,172,74)"/>
+            <!-- Tomato deco on flap -->
+            <text x="38" y="48" font-size="16" font-family="serif" opacity=".28" fill="#ff6347">🍅</text>
+            <text x="298" y="52" font-size="14" font-family="serif" opacity=".28" fill="#ff6347">🍅</text>
+          </svg>
+        </div>
+        <!-- Back face (inner colour) -->
+        <div class="flap-face back">
+          <svg viewBox="0 0 360 240" width="360" height="240" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+            <defs>
+              <linearGradient id="flapGradB" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%"   stop-color="#ffe8e8"/>
+                <stop offset="100%" stop-color="#fff5f5"/>
+              </linearGradient>
+              <clipPath id="flapClipB"><rect x="0" y="0" width="360" height="240" rx="12" ry="12"/></clipPath>
+            </defs>
+            <polygon points="0,0 360,0 180,128" fill="url(#flapGradB)" clip-path="url(#flapClipB)" opacity=".88"/>
+          </svg>
+        </div>
+      </div>
+
+    </div><!-- end .envelope-wrap -->
+
+    <div class="hint" id="hint">✨ Click to open your letter ✨</div>
+  </div><!-- end .envelope-scene -->
+
+  <!-- MESSAGE CARD -->
+  <div class="message-card" id="messageCard">
+    <span class="corner tl">🍅</span>
+    <span class="corner tr">🌹</span>
+    <span class="corner bl">🌺</span>
+    <span class="corner br">❤️</span>
+
+    <span class="msg-salutation">To the woman who gave me everything</span>
+    <div class="msg-body">
+      <p class="typed" data-delay="0">"When God made moms, He gave me the best one."</p>
+      <p class="typed" data-delay="340">Everything I am today is because of you. Your love, guidance, and unwavering support will always stay with me—something I will forever treasure.</p>
+      <p class="typed" data-delay="680">I am, and always will be, grateful for your patience and for all the sacrifices you've made for us. Thank you for the valuable lessons and words of wisdom that continue to remind me to be kind in every way I can. I'm still trying my best to become a better person though :>.</p>
+      <p class="typed" data-delay="1020">This appreciation is the least I can do for everything you've done—not just for me, but you know who the others are. I may not always be vocal about everything, but my love for you is beyond words.</p>
+      <p class="typed" data-delay="1360">So therefore I conclude, cringe mag hiligaynon teh libre moko sa sunday kay ma eatings ta><.</p>
+    </div>
+    <span class="msg-signature">—mj vyelle dominique</span>
+  </div>
+
+  <!-- MEMORY FRAMES -->
+  <div class="memories" id="memories">
+    <div class="memories-label">🍅 Moments I treasure most 🌹</div>
+    <div class="photo-strip" id="photoStrip"></div>
+  </div>
+
+  <!-- LOVE METER -->
+  <div class="love-meter" id="loveMeter">
+    <div class="love-label">Sending you all my heart, Mama 💕</div>
+    <div class="hearts-row" id="heartsRow"></div>
+  </div>
+
+  <!-- WISH BAR -->
+  <div class="wish-bar" id="wishBar">
+    <div class="wish-text">Filling your day with love...</div>
+    <div class="wish-bar-inner"><div class="wish-fill" id="wishFill"></div></div>
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="btn-row" id="btnRow">
+    <button class="btn btn-ghost"   onclick="resetEnvelope()">💌 Open again</button>
+    <button class="btn btn-primary" onclick="shareCard(event)">🍅 Share the love</button>
+  </div>
+
+  <div class="flourish" id="footerFlourish" style="display:none;margin-top:10px;">
+    <div class="flourish-center">✦ &nbsp; ✦ &nbsp; ✦</div>
+  </div>
+
+  <div class="footer">Crafted with love, just for you 🌹</div>
+</div>
+
+<script>
+/* ══ CUSTOM CURSOR ══ */
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+});
+(function animRing(){
+  rx+=(mx-rx)*.18; ry+=(my-ry)*.18;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+})();
+
+/* ══ PETAL CANVAS ══ */
+const canvas=document.getElementById('petalCanvas');
+const ctx=canvas.getContext('2d');
+let W,H;
+function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; }
+resize(); window.addEventListener('resize',resize);
+
+const PALS=[
+  ['#fff0f0','#ffb3b3','#e63946'],
+  ['#ffe0e0','#ff8080','#c1121f'],
+  ['#fff5f5','#ffcccc','#ff6347'],
+  ['#ffe8e8','#ffd0d0','#85182a'],
+];
+
+class Petal {
+  constructor(fast=false){ this.init(fast); }
+  init(fast=false){
+    this.x=Math.random()*W;
+    this.y=fast?Math.random()*H:-35;
+    this.sz=9+Math.random()*16;
+    this.vy=.5+Math.random()*1.2;
+    this.vx=(Math.random()-.5)*.75;
+    this.a=Math.random()*Math.PI*2;
+    this.spin=(Math.random()-.5)*.034;
+    this.wob=Math.random()*Math.PI*2;
+    this.wSpd=.015+Math.random()*.014;
+    this.alpha=.45+Math.random()*.45;
+    this.pal=PALS[Math.floor(Math.random()*PALS.length)];
+  }
+  step(){
+    this.wob+=this.wSpd;
+    this.x+=this.vx+Math.sin(this.wob)*.7;
+    this.y+=this.vy;
+    this.a+=this.spin;
+    if(this.y>H+45) this.init();
+  }
+  draw(c){
+    c.save();
+    c.translate(this.x,this.y);
+    c.rotate(this.a);
+    c.globalAlpha=this.alpha;
+    const g=c.createRadialGradient(-.2*this.sz,-.25*this.sz,0,0,0,this.sz);
+    g.addColorStop(0,this.pal[0]);
+    g.addColorStop(.55,this.pal[1]);
+    g.addColorStop(1,this.pal[2]);
+    c.fillStyle=g;
+    c.beginPath();
+    c.ellipse(0,0,this.sz*.52,this.sz,0,0,Math.PI*2);
+    c.fill();
+    c.globalAlpha=this.alpha*.16;
+    c.strokeStyle=this.pal[2];
+    c.lineWidth=.7;
+    c.beginPath();
+    c.moveTo(0,-this.sz*.84);
+    c.quadraticCurveTo(this.sz*.28,0,0,this.sz*.92);
+    c.stroke();
+    c.restore();
+  }
+}
+
+/* Tiny tomatoes fall too */
+class TomatoDrop {
+  constructor(fast=false){ this.init(fast); }
+  init(fast=false){
+    this.x=Math.random()*W;
+    this.y=fast?Math.random()*H:-40;
+    this.sz=14+Math.random()*10;
+    this.vy=.3+Math.random()*.6;
+    this.vx=(Math.random()-.5)*.4;
+    this.a=Math.random()*Math.PI*2;
+    this.spin=(Math.random()-.5)*.02;
+    this.alpha=.12+Math.random()*.12;
+  }
+  step(){
+    this.x+=this.vx;
+    this.y+=this.vy;
+    this.a+=this.spin;
+    if(this.y>H+50) this.init();
+  }
+  draw(c){
+    c.save();
+    c.translate(this.x,this.y);
+    c.rotate(this.a);
+    c.globalAlpha=this.alpha;
+    c.font=this.sz+'px serif';
+    c.textAlign='center';
+    c.textBaseline='middle';
+    c.fillText('🍅',0,0);
+    c.restore();
+  }
+}
+
+const petals=[...Array.from({length:38},(_,i)=>new Petal(i<18)),...Array.from({length:8},(_,i)=>new TomatoDrop(i<4))];
+(function loop(){ ctx.clearRect(0,0,W,H); petals.forEach(p=>{p.step();p.draw(ctx);}); requestAnimationFrame(loop); })();
+
+/* ══ SPARKLES ══ */
+for(let i=0;i<22;i++){
+  const s=document.createElement('div');
+  s.className='sparkle';
+  s.style.cssText=`
+    left:${Math.random()*100}vw;top:${Math.random()*100}vh;
+    animation-duration:${2+Math.random()*3.5}s;
+    animation-delay:${Math.random()*5}s;
+    width:${3+Math.random()*5}px;height:${3+Math.random()*5}px;
+    background:hsl(${0+Math.random()*30},100%,${72+Math.random()*18}%);
+    box-shadow:0 0 ${5+Math.random()*6}px ${2+Math.random()*3}px rgba(255,120,100,.8);
+  `;
+  document.body.appendChild(s);
+}
+
+/* ══ MOUSE TRAIL + RIPPLE ══ */
+let lastT=0;
+document.addEventListener('mousemove',e=>{
+  const now=Date.now();
+  if(now-lastT<100) return;
+  lastT=now;
+  const h=document.createElement('div');
+  h.className='trail-el';
+  h.textContent=['❤️','🍅','🌹','✨','💖','🌺'][Math.floor(Math.random()*6)];
+  h.style.left=(e.clientX-14)+'px';
+  h.style.top=(e.clientY-14)+'px';
+  document.body.appendChild(h);
+  h.addEventListener('animationend',()=>h.remove());
+});
+document.addEventListener('click',e=>{
+  const r=document.createElement('div');
+  r.className='ripple';
+  r.style.left=e.clientX+'px';
+  r.style.top=e.clientY+'px';
+  document.body.appendChild(r);
+  r.addEventListener('animationend',()=>r.remove());
+});
+
+/* ══ ENVELOPE OPEN ══ */
+let opened=false;
+
+function openEnvelope(){
+  if(opened) return;
+  opened=true;
+
+  const envWrap=document.getElementById('envWrap');
+  const flap=document.getElementById('flapWrapper');
+  const letter=document.getElementById('letterGroup');
+  const hint=document.getElementById('hint');
+  const card=document.getElementById('messageCard');
+  const meter=document.getElementById('loveMeter');
+  const memories=document.getElementById('memories');
+  const wishBar=document.getElementById('wishBar');
+  const btnRow=document.getElementById('btnRow');
+  const footerF=document.getElementById('footerFlourish');
+
+  hint.style.opacity='0';
+  envWrap.classList.add('is-opening');
+
+  /* 1 – shake done, flip the flap */
+  setTimeout(()=>{
+    envWrap.classList.remove('is-opening');
+    envWrap.style.animation='none';
+    flap.classList.add('open');
+  }, 680);
+
+  /* 2 – letter rises */
+  setTimeout(()=>{ letter.classList.add('risen'); }, 1100);
+
+  /* 3 – card + confetti */
+  setTimeout(()=>{
+    spawnConfetti();
+    spawnConfetti(); // double burst
+
+    card.classList.add('show');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ card.classList.add('visible'); }));
+
+    document.querySelectorAll('.typed').forEach(p=>{
+      setTimeout(()=>p.classList.add('visible'), parseInt(p.dataset.delay)+500);
+    });
+
+    /* Memory frames */
+    setTimeout(()=>{
+      memories.classList.add('show');
+      const strip=document.getElementById('photoStrip');
+      const frames=['🤱','🌹','🏡','🍽️','🎂','💝','🍅','🌺'];
+      frames.forEach((f,i)=>{
+        setTimeout(()=>{
+          const fr=document.createElement('div');
+          fr.className='photo-frame';
+          fr.textContent=f;
+          fr.style.animationDelay=(i*.08)+'s';
+          strip.appendChild(fr);
+        },i*90);
+      });
+    },600);
+
+    /* Hearts */
+    setTimeout(()=>{
+      meter.classList.add('show');
+      const row=document.getElementById('heartsRow');
+      ['❤️','🍅','💕','💓','🌹','💞','💝','🌺'].forEach((h,i)=>{
+        setTimeout(()=>{
+          const sp=document.createElement('span');
+          sp.className='heart-beat';
+          sp.textContent=h;
+          sp.style.animationDelay=(i*.07)+'s';
+          row.appendChild(sp);
+        },i*110);
+      });
+    }, 1000);
+
+    /* Wish bar */
+    setTimeout(()=>{
+      wishBar.classList.add('show');
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        document.getElementById('wishFill').style.width='100%';
+      }));
+    },1300);
+
+    /* Buttons */
+    setTimeout(()=>{
+      btnRow.classList.add('show');
+      footerF.style.display='flex';
+    },1700);
+
+  }, 2100);
+}
+
+function resetEnvelope(){
+  opened=false;
+  const flap=document.getElementById('flapWrapper');
+  const letter=document.getElementById('letterGroup');
+  const hint=document.getElementById('hint');
+  const card=document.getElementById('messageCard');
+  const meter=document.getElementById('loveMeter');
+  const memories=document.getElementById('memories');
+  const wishBar=document.getElementById('wishBar');
+  const btnRow=document.getElementById('btnRow');
+  const footerF=document.getElementById('footerFlourish');
+  const envWrap=document.getElementById('envWrap');
+
+  card.classList.remove('visible');
+  btnRow.classList.remove('show');
+  meter.classList.remove('show');
+  memories.classList.remove('show');
+  wishBar.classList.remove('show');
+  footerF.style.display='none';
+
+  setTimeout(()=>{
+    card.classList.remove('show');
+    flap.classList.remove('open');
+    letter.classList.remove('risen');
+    hint.style.opacity='';
+    document.querySelectorAll('.typed').forEach(p=>p.classList.remove('visible'));
+    document.getElementById('heartsRow').innerHTML='';
+    document.getElementById('photoStrip').innerHTML='';
+    document.getElementById('wishFill').style.width='0%';
+    envWrap.style.animation='';
+  }, 780);
+}
+
+/* ══ CONFETTI ══ */
+function spawnConfetti(){
+  const colors=['#ffb3b3','#e63946','#c1121f','#ff6347','#85182a','#ffe082','#ffcccc','#ff8080','#ffd0d0'];
+  const shapes=['50%','4px','50% 0 50% 50%','0','30%'];
+  const cx=innerWidth/2, cy=innerHeight/2.9;
+  for(let i=0;i<60;i++){
+    const c=document.createElement('div');
+    c.className='cfp';
+    const angle=Math.random()*Math.PI*2;
+    const dist=70+Math.random()*260;
+    const tx=Math.cos(angle)*dist;
+    const ty=Math.sin(angle)*dist-120;
+    const sz=5+Math.random()*13;
+    const dur=.9+Math.random()*1;
+    c.style.cssText=`left:${cx}px;top:${cy}px;background:${colors[Math.floor(Math.random()*colors.length)]};width:${sz}px;height:${sz*(.5+Math.random())}px;border-radius:${shapes[Math.floor(Math.random()*shapes.length)]};--tx:${tx}px;--ty:${ty}px;animation-duration:${dur}s;animation-delay:${Math.random()*.35}s;`;
+    document.body.appendChild(c);
+    c.addEventListener('animationend',()=>c.remove());
+  }
+}
+
+/* ══ SHARE ══ */
+function shareCard(e){
+  if(navigator.share){
+    navigator.share({title:"Happy Mother's Day 🍅❤️",text:"Sending you all my love on this special day, Mama! 🌹",url:location.href}).catch(()=>{});
+  } else {
+    navigator.clipboard?.writeText(location.href);
+    const btn=e.target; const orig=btn.textContent;
+    btn.textContent='✓ Link copied!';
+    setTimeout(()=>btn.textContent=orig,2200);
+  }
+}
+</script>
+</body>
+</html>
